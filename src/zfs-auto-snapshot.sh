@@ -32,7 +32,7 @@ opt_event='-'
 opt_fast_zfs_list=''
 opt_keep=''
 opt_label=''
-opt_prefix='zfs-auto-snap'
+opt_prefix='backup'
 opt_recursive=''
 opt_sep='_'
 opt_setauto=''
@@ -537,10 +537,10 @@ SNAPPROP="-o com.sun:auto-snapshot-desc='$opt_event'"
 DATE=$(date --utc +%F-%H%M)
 
 # The snapshot name after the @ symbol.
-SNAPNAME="$opt_prefix${opt_label:+$opt_sep$opt_label}-$DATE"
+SNAPNAME="$opt_prefix-$DATE${opt_label:+$opt_sep$opt_label}"
 
 # The expression for matching old snapshots.  -YYYY-MM-DD-HHMM
-SNAPGLOB="$opt_prefix${opt_label:+?$opt_label}????????????????"
+SNAPGLOB="$opt_prefix????????????????${opt_label:+?$opt_label}"
 
 if [ -n "$opt_do_snapshots" ]
 then
